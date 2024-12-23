@@ -78,9 +78,10 @@ class FinancialStatusApp:
 
             if age < 18:
                 raise ValueError("Младше 18 - кредиты не выдаются!")
-
-            if income < 0 or loan_amount < 0:
-                raise ValueError("Отрицательные значения не допускаются!")
+            if income < 0:
+                raise ValueError("Отрицательные значения дохода не допускаются!")
+            if loan_amount <= 0:
+                raise ValueError("Сумма кредита должна быть > 0!")
 
             # Формируем входные данные для модели
             input_data = pd.DataFrame([[age, income, loan_amount, credit_score, savings]], 
